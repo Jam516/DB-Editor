@@ -7,11 +7,11 @@ st.set_page_config(layout="wide", page_title="Project Metadata", page_icon="🧮
 
 conn = st.connection("snowflake")
 
-st.title("Project Metadata Table Editor 🧮")
+st.title("Project Contracts Table Editor 🧮")
 
 session = conn.session()
 
-df = session.table("ARBIGRANTS_LABELS_PROJECT_METADATA").to_pandas()
+df = session.table("ARBIGRANTS_LABELS_PROJECT_CONTRACTS").to_pandas()
 
 with st.form("data_editor_form"):
     st.markdown("**Edit the table and then click the UPDATE TABLE button to save your changes.**")
@@ -21,7 +21,7 @@ with st.form("data_editor_form"):
 if submit_button:
     try:
         #Note the quote_identifiers argument for case insensitivity
-        session.write_pandas(edited_df, "ARBIGRANTS_LABELS_PROJECT_METADATA", overwrite=True, quote_identifiers=False)
+        session.write_pandas(edited_df, "ARBIGRANTS_LABELS_PROJECT_CONTRACTS", overwrite=True, quote_identifiers=False)
         st.success("Table updated")
         time.sleep(5)
     except:
