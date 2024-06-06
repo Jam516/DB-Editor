@@ -1,0 +1,3 @@
+streamlit
+pyarrow==8.0.0
+snowflake-snowpark-python
