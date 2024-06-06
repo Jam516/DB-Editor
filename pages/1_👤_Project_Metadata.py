@@ -3,21 +3,20 @@ import json
 import streamlit as st
 import time
 
-st.set_page_config(layout="centered", page_title="Data Editor", page_icon="🧮")
+st.set_page_config(layout="wide", page_title="Project Metadata", page_icon="🧮")
 
 conn = st.connection("snowflake")
 
-st.title("Snowflake Table Editor ❄️")
-st.caption("This is a demo of the `st.experimental_data_editor`.")
+st.title("Project Metadata Table Editor 🧮")
 
 session = conn.session()
 
 df = session.table("ARBIGRANTS_LABELS_PROJECT_METADATA").to_pandas()
 
 with st.form("data_editor_form"):
-    st.caption("Edit the dataframe below")
+    st.markdown("### Edit the table and then click the <span style='color: green;'>UPDATE TABLE</span> button to save your changes.")
     edited_df = st.data_editor(df, num_rows="dynamic")
-    submit_button = st.form_submit_button("Submit")
+    submit_button = st.form_submit_button("UPDATE TABLE")
 
 if submit_button:
     try:

@@ -1,0 +1,27 @@
+#--------------------------------------------------------#
+# Imports
+#--------------------------------------------------------#
+import streamlit as st
+
+#--------------------------------------------------------#
+# Main Body
+#--------------------------------------------------------#
+
+st.set_page_config(
+  page_title="Arbigrants Database Editor",
+  page_icon="✨",
+  layout="wide",
+)
+
+# Create the title at the tp of page
+st.title('Arbigrants Database Editor')
+
+st.markdown(
+    """
+    This app allows you to edit, add and delete rows from the Project tables of the Arbigrants database. Specifically,
+    - ARBIGRANTS_LABELS_PROJECT_METADATA: This table contains desctiptive information on each project (description, category, social links .etc). One row per project.
+    - ARBIGRANTS_LABELS_PROJECT_CONTRACTS: This table contains the contracts for all the projects. One row per contract.
+    
+    **👈 Select a table from the sidebar**
+"""
+)
