@@ -12,12 +12,13 @@ st.title("Leaderboard 🧮")
 session = conn.session()
 
 df = session.table("ARBIGRANTS_ALL_MONTH_LEADERBOARD").to_pandas()
+df = df.sort_values(by="ETH_FEES", ascending=False)
 
 csv = df.to_csv(index=False)
 st.download_button(
-    label="Download Leaderboard",
+    label="Download Month Leaderboard",
     data=csv,
-    file_name="leaderboard.csv",
+    file_name="month_leaderboard.csv",
     mime="text/csv",
     icon=":material/download:",
 )
