@@ -14,11 +14,23 @@ session = conn.session()
 df = session.table("ARBIGRANTS_ALL_MONTH_LEADERBOARD").to_pandas()
 df = df.sort_values(by="ETH_FEES", ascending=False)
 
+df2 = session.table("ARBIGRANTS_ALL_WEEK_LEADERBOARD").to_pandas()
+df2 = df2.sort_values(by="ETH_FEES", ascending=False)
+
 csv = df.to_csv(index=False)
 st.download_button(
     label="Download Month Leaderboard",
     data=csv,
     file_name="month_leaderboard.csv",
+    mime="text/csv",
+    icon=":material/download:",
+)
+
+csv2 = df2.to_csv(index=False)
+st.download_button(
+    label="Download Week Leaderboard",
+    data=csv2,
+    file_name="week_leaderboard.csv",
     mime="text/csv",
     icon=":material/download:",
 )
